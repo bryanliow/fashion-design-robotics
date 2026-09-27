@@ -1,0 +1,37 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.preview-venv/
+
+# Local databases (Flask instance folder, SQLite files)
+instance/
+*.db
+*.sqlite3
+
+# Arduino / PlatformIO build output
+.pio/
+*.hex
+*.elf
+
+# Editors and IDEs
+.vscode/
+.idea/
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

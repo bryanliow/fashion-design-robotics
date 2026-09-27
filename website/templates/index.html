@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% from '_product_card.html' import product_card with context %}
+{% from '_custom_gallery.html' import custom_gallery %}
+{% block title %}Bryan Denim — Handmade to fit you{% endblock %}
+{% block content %}
+<section class="hero">
+  <img class="hero-image" src="{{ url_for('static', filename='assets/img/everything better.jpg') }}" alt="A selection of handmade denim pieces">
+  <div class="container hero-content">
+    <p class="eyebrow">Handmade in the UK</p>
+    <h1>Denim made<br><em>for your shape.</em></h1>
+    <p>Handmade denim, trousers and shirts, sewn in small runs from premium fabric.</p>
+    <div class="hero-actions"><a class="button" href="{{ url_for('shop') }}">Explore the collection <span>→</span></a><a class="button button--light" href="{{ url_for('about') }}">Our story</a></div>
+  </div>
+</section>
+<section class="section"><div class="container"><div class="section-heading"><div><p class="eyebrow">New in</p><h2>Built slowly.<br>Made to last.</h2></div><p>Denim, trousers and shirts, each made by hand in small runs. Every piece £{{ price }}.</p></div>
+<div class="product-grid product-grid--four">{% for p in featured %}{{ product_card(p) }}{% endfor %}</div>
+<div class="section-cta"><a class="button button--light" href="{{ url_for('shop') }}">Shop the full collection <span>→</span></a></div></div></section>
+<section class="section section--custom"><div class="container"><div class="section-heading"><div><p class="eyebrow">Customisation · +£{{ custom_price }}</p><h2>Art on every pocket.</h2></div><p>Add hand-embroidered pocket artwork to any piece, designed with you and stitched by hand.</p></div>
+{{ custom_gallery(custom_images) }}
+<div class="section-cta"><a class="button" href="{{ url_for('customise') }}">How customisation works <span>→</span></a></div></div></section>
+<section class="section values"><div class="container"><div class="value-grid"><div class="value"><span class="value-number">01</span><h3>Made to measure</h3><p>Every pair is tailored around your waist, seat, inseam and full length.</p></div><div class="value"><span class="value-number">02</span><h3>Hand sewn</h3><p>Small-run construction means careful finishing at every stage.</p></div><div class="value"><span class="value-number">03</span><h3>Premium fabric</h3><p>Quality cotton denim selected for its weight, texture and character.</p></div></div></div></section>
+{% endblock %}

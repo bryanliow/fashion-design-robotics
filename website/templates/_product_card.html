@@ -1,0 +1,6 @@
+{% macro product_card(p) %}
+<a class="product-card" href="{{ url_for('product', slug=p.slug) }}" data-category="{{ p.category }}">
+  <div class="product-card-image"><img src="{{ url_for('static', filename='assets/img/' ~ p.images[0]) }}" alt="{{ p.name }}" loading="lazy"></div>
+  <div class="product-card-body"><div><h3>{{ p.name }}</h3><p>{{ p.summary }}</p></div><span class="price">£{{ price }}</span></div>
+</a>
+{% endmacro %}

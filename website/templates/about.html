@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}The Story — Bryan Denim{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><p class="eyebrow">The maker</p><h1>Fashion meets robotics.</h1><p>A self-taught sewing hobby that became an autonomous pattern-drawing robot, and then this shop.</p></div></section>
+<section class="container about-layout">
+  <img class="about-image" src="{{ url_for('static', filename='assets/img/everything.jpg') }}" alt="A collection of Bryan's handmade denim">
+  <div class="about-copy">
+    <p>Having taught myself to sew bespoke garments, I wanted to combine that hobby with my interest in robotics. So I designed and built an autonomous robot that draws out trouser patterns from a set of body measurements.</p>
+    <h2>Autonomous Robotics System</h2>
+    <p class="about-dates">Fashion design and robotics · Oct 2024 – Feb 2025</p>
+    <ul class="about-points">
+      <li><strong>Design and software</strong>I modelled the chassis in SolidWorks and wrote embedded C++ for an Arduino microcontroller, structured as a finite-state machine.</li>
+      <li><strong>Solving the hard problem</strong>A hardware fault was costing the robot its drive traction. I re-engineered the voltage step-down with a new motor driver and switched to Mecanum wheels, so every pattern it draws is precise and consistent.</li>
+      <li><strong>From workshop to web</strong>I then taught myself HTML, CSS, Python and PostgreSQL to launch this shop, with product listings, payments, customer feedback and secure accounts.</li>
+    </ul>
+    <p>Every piece here is still cut and sewn by hand.</p>
+    <a class="button" href="{{ url_for('shop') }}">See the collection <span>→</span></a>
+  </div>
+</section>
+{% endblock %}

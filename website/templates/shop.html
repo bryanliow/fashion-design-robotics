@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% from '_product_card.html' import product_card with context %}
+{% block title %}Shop — Bryan Denim{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><p class="eyebrow">The collection</p><h1>Considered pieces.</h1><p>Handmade denim, trousers and shirts, cut in small runs. Every piece is £{{ price }}.</p></div></section>
+<section class="shop-main"><div class="container">
+  <div class="shop-toolbar">
+    <div class="filters" role="group" aria-label="Filter by category">
+      <button class="filter is-active" type="button" data-filter="all">All</button>
+      {% for c in categories %}<button class="filter" type="button" data-filter="{{ c }}">{{ c }}</button>{% endfor %}
+    </div>
+    <p class="shop-count"><span id="shopCount">{{ products|length }}</span> pieces</p>
+  </div>
+  <div class="product-grid product-grid--shop">
+    {% for p in products %}{{ product_card(p) }}{% endfor %}
+  </div>
+</div></section>
+{% endblock %}

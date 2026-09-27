@@ -1,0 +1,7 @@
+{% macro custom_gallery(images) %}
+{% if images %}
+<div class="custom-gallery">{% for img in images %}<figure><img src="{{ url_for('static', filename='assets/img/custom/' ~ img) }}" alt="Hand-embroidered denim pocket design" loading="lazy"></figure>{% endfor %}</div>
+{% else %}
+<div class="custom-empty"><p>Pocket design photos coming soon.</p></div>
+{% endif %}
+{% endmacro %}

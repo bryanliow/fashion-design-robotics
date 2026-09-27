@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% from '_product_card.html' import product_card with context %}
+{% block title %}{{ product.name }} — Bryan Denim{% endblock %}
+{% block content %}
+<div class="container">
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb"><a href="{{ url_for('shop') }}">Shop</a><span>/</span><span>{{ product.category }}</span></nav>
+  <div class="product-page">
+    <div class="product-gallery">
+      <div class="gallery-main"><img id="galleryMain" src="{{ url_for('static', filename='assets/img/' ~ product.images[0]) }}" alt="{{ product.name }}"></div>
+      {% if product.images|length > 1 %}
+      <div class="gallery-thumbs">
+        {% for img in product.images %}
+        <button type="button" class="thumb{% if loop.first %} is-active{% endif %}" data-src="{{ url_for('static', filename='assets/img/' ~ img) }}" aria-label="Show image {{ loop.index }}"><img src="{{ url_for('static', filename='assets/img/' ~ img) }}" alt="" loading="lazy"></button>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <section class="product-info">
+      <p class="eyebrow">{{ product.category }} · Handmade</p>
+      <h1>{{ product.name }}</h1>
+      <p class="price">£{{ price }}.00</p>
+      <p class="product-intro">{{ product.intro }}</p>
+      <ul class="details">{% for label, value in product.details %}<li><strong>{{ label }}</strong> {{ value }}</li>{% endfor %}</ul>
+      <label class="addon">
+        <input type="checkbox" id="addonCustom">
+        <span class="addon-body"><strong>Add pocket embroidery <span class="price">+£{{ custom_price }}</span></strong><span>Hand-embroidered artwork on the back pockets, designed with you. <a href="{{ url_for('customise') }}">See examples</a></span></span>
+      </label>
+      <p class="total">Total <span id="orderTotal" data-base="{{ price }}" data-addon="{{ custom_price }}">£{{ price }}</span></p>
+      {% set plain_href = product.stripe or url_for('contact', product=product.slug) %}
+      {% set plain_label = 'Buy now' if product.stripe else 'Order this piece' %}
+      <a class="button button--wide" id="orderButton" href="{{ plain_href }}" data-plain="{{ plain_href }}" data-custom="{{ url_for('contact', product=product.slug, custom=1) }}" data-plain-label="{{ plain_label }}"><span class="order-label">{{ plain_label }}</span> <span>→</span></a>
+      <p class="product-note">Questions about sizing? <a href="{{ url_for('contact', product=product.slug) }}">Ask before you order</a>.</p>
+    </section>
+  </div>
+</div>
+<section class="section section--related"><div class="container"><div class="section-heading"><div><p class="eyebrow">You might also like</p><h2>More pieces</h2></div><a class="text-link" href="{{ url_for('shop') }}">View all →</a></div>
+  <div class="product-grid product-grid--three">{% for p in others %}{{ product_card(p) }}{% endfor %}</div>
+</div></section>
+{% endblock %}

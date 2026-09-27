@@ -41,6 +41,8 @@ img { display: block; max-width: 100%; }
 .hero h1, .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.2rem, 7vw, 6rem); font-weight: 600; letter-spacing: -.055em; line-height: .94; margin: 0 0 1.5rem; }
 .hero p:not(.eyebrow) { color: #e7edf4; font-size: 1.1rem; margin-bottom: 2rem; max-width: 480px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.hero .button--light { border-color: rgba(255,255,255,.55); color: #fff; }
+.hero .button--light:hover { background: #fff; color: var(--denim-dark); }
 
 .section { padding: 6rem 0; }
 .section-heading { align-items: end; display: flex; justify-content: space-between; margin-bottom: 2.35rem; }
